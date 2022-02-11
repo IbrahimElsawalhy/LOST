@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Screens/homee/home.dart';
+import 'Screens/homee/loading_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: home_page(),
+      home: Splash(),
     );
   }
 }

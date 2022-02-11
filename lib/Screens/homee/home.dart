@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_ui/Screens/animation/animation.dart';
 import 'package:login_ui/Screens/login/login.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_ui/components/background_1.dart';
@@ -8,33 +9,54 @@ class home_page extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      
       appBar: AppBar(
+        
         centerTitle: true,
-        title: Text(
-          'LOST',
-          style: GoogleFonts.nunitoSans(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 3,
-            color: Color.fromRGBO(0, 0, 0, 1),
+        // title: Text(
+        //   'LOST',
+        //   style: GoogleFonts.nunitoSans(
+        //     fontSize: 30,
+        //     fontWeight: FontWeight.bold,
+        //     letterSpacing: 3,
+        //     color: Color.fromRGBO(0, 0, 0, 1),
+        //   ),
+        // ),
+        title:  Container(
+              height:100,
+              width: 100,
+              
+              child:  const Image(image: AssetImage('assets/images/logo_nav.png')),
+            ),
+       flexibleSpace: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40),bottomRight: Radius.circular(40)),
+                gradient: LinearGradient(
+                    colors: [Color.fromRGBO(210, 49, 153, 1),
+                            Color.fromRGBO(114, 79, 199, 1)],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter
+                )
+            ),
           ),
-        ),
+        
         leading: IconButton(
             onPressed: () {},
             icon: const Icon(
               Icons.menu_rounded,
-              color: Color.fromRGBO(0, 0, 0, 1),
+              color: Color.fromRGBO(255, 255, 255, 1),
             )),
         actions: [
           IconButton(
               onPressed: () {},
               icon: const Icon(
                 Icons.person_outlined,
-                color: Color.fromRGBO(0, 0, 0, 1),
+                color: Color.fromRGBO(255, 255, 255, 1),
               ))
         ],
         backgroundColor: Colors.transparent,
         elevation: 0,
+        
       ),
       body: Background_1(
         child: Column(
@@ -74,10 +96,7 @@ class home_page extends StatelessWidget {
                 children: [
                   RaisedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
+                      Navigator.of(context).push(SlideLeft(Page: LoginScreen()));
                     },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(80.0)),

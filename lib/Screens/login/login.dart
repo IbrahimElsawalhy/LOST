@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:login_ui/Screens/animation/animation.dart';
 import 'package:login_ui/Screens/register/register.dart';
 import 'package:login_ui/components/background.dart';
 
@@ -109,7 +110,7 @@ class LoginScreen extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
               child: GestureDetector(
                 onTap: () => {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()))
+                  Navigator.of(context).push(SlideLeft(Page: RegisterScreen()))
                 },
                 child: Text(
                   "Don't Have an Account? Sign up",
