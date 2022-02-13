@@ -32,11 +32,9 @@ class home_page extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40),bottomRight: Radius.circular(40)),
                 gradient: LinearGradient(
-                    colors: [Color.fromRGBO(210, 49, 153, 1),
-                            Color.fromRGBO(114, 79, 199, 1)],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter
-                )
+                    colors: [Color.fromRGBO(210, 49, 153, 1)
+                            ,Color.fromRGBO(114, 79, 199, 1)]
+               )
             ),
           ),
         

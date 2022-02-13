@@ -7,7 +7,7 @@ class SlideLeft extends PageRouteBuilder {
             pageBuilder: (context, animation, secondaryAnimation) => Page,
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
-              var begin = Offset(1.0, .0);
+              var begin = Offset(0.1, 0.0);
               var end = Offset(0.0, 0.0);
               var tween = Tween(begin: begin, end: end);
               var curvesanimation = CurvedAnimation(
