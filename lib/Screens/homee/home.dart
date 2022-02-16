@@ -5,6 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:login_ui/components/background_1.dart';
 
 class home_page extends StatelessWidget {
+  var text;
+
+  get children => null;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -32,8 +36,8 @@ class home_page extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40),bottomRight: Radius.circular(40)),
                 gradient: LinearGradient(
-                    colors: [Color.fromRGBO(210, 49, 153, 1)
-                            ,Color.fromRGBO(114, 79, 199, 1)]
+                    colors: [Color.fromRGBO(146, 39, 142, 1)
+                            ,Color.fromRGBO(158, 31, 100, 1)]
                )
             ),
           ),
@@ -56,103 +60,93 @@ class home_page extends StatelessWidget {
         elevation: 0,
         
       ),
-      body: Background_1(
+      body: Center(
+        // ignore: avoid_unnecessary_containers
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              alignment: Alignment.topCenter,
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-              child: Text(
-                "WELCOME SIR!",
-                style: GoogleFonts.nunitoSans(
-                    fontWeight: FontWeight.bold,
-                    color:Color.fromRGBO(114, 79, 199, 1),
-                    fontSize: 32
-                    ),
-              ),
-            ),
-            SizedBox(height: size.height * 0.01),
-            Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-              child: Text(
-                "We will help you find your device, sign in to start the search journey ",
-                style: GoogleFonts.ubuntu(
-                    fontWeight: FontWeight.normal,
-                    color: Color.fromRGBO(0, 0, 0, 0.5),
-                    fontSize: 16),
-                textAlign: TextAlign.center,
-              ),
-            ),
-             SizedBox(height: size.height * 0.02),
-            ElevatedButtonTheme(
-              data: ElevatedButtonThemeData(
-                  style: ElevatedButton.styleFrom(minimumSize: Size(120, 60))),
-              child: ButtonBar(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  RaisedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(SlideLeft(Page: LoginScreen()));
-                    },
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(80.0)),
-                    textColor: Colors.white,
-                    padding: const EdgeInsets.all(0),
-                    child: Container(
+          children: [
+            Row(
+              
+              children: [
+                Column(
+                  children:[
+                    Container(
+
                       alignment: Alignment.center,
-                      height: 50.0,
-                      width: size.width * 0.4,
-                      decoration: new BoxDecoration(
-                          borderRadius: BorderRadius.circular(80.0),
-                          gradient: new LinearGradient(colors: [
-                            Color.fromRGBO(210, 49, 153, 1),
-                            Color.fromRGBO(114, 79, 199, 1)
-                          ])),
-                      padding: const EdgeInsets.all(0),
-                      child: Text(
-                        "SEARCH",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.nunitoSans(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      height: 120,
+                      width: 120,
+                      margin: EdgeInsets.fromLTRB(30.0, 40.0, 0.0, 0.0),
+                      child: const Image(image: AssetImage('assets/images/Stolen_without_space.png')),              
                     ),
-                  ),
-                  RaisedButton(
-                    onPressed: () {},
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(80.0)),
-                    textColor: Colors.white,
-                    padding: const EdgeInsets.all(0),
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 50.0,
-                      width: size.width * 0.4,
-                      decoration: new BoxDecoration(
-                          borderRadius: BorderRadius.circular(80.0),
-                          gradient: new LinearGradient(colors: [
-                            Color.fromRGBO(210, 49, 153, 1),
-                            Color.fromRGBO(114, 79, 199, 1)
-                          ])),
-                      padding: const EdgeInsets.all(0),
+                    Container(
+                      margin:EdgeInsets.fromLTRB(30.0, 10.0, 0.0, 0.0), 
                       child: Text(
-                        "REVIEW",
+                        'Make report',
                         textAlign: TextAlign.center,
+                        
                         style: GoogleFonts.nunitoSans(
+                          color: Color.fromRGBO(146, 39, 142, 1),
                           fontWeight: FontWeight.bold,
+                          fontSize: 18,),
                           
-                        ),
                       ),
-                    ),
-                  ),
-                 SizedBox(height: size.height * 0.05),
-                ],
-              ),
+                      
+                    )
+                  ]
+                ),
+
+            Column(
+              
+                  children:[
+                    
+             // ignore: deprecated_member_use
+             RaisedButton( 
+               onPressed: () {
+                      Navigator.of(context).push(SlideLeft(Page: LoginScreen()));
+                    }, 
+                    color:Colors.white,  
+            child: Column(
+              
+                            children:[
+                              Container( 
+                    
+                                height: 120,
+                                width: 120,
+                                margin: EdgeInsets.fromLTRB(90.0, 40.0, 0.0, 0.0),
+                                child: const Image(image: AssetImage('assets/images/StoreOwner_without_space.png')),
+                  
+                              ),
+                              Container(
+                                margin:EdgeInsets.fromLTRB(90.0, 10.0, 0.0, 0.0) ,
+                                child: Text(
+                                  'Store owner',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.nunitoSans(
+                                  color: Color.fromRGBO(158, 31, 100, 1),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,),
+                                
+                                ),
+                            
+                              ),
+                            ]
+                          )
+                  
+             )
+                  ]
+            )
+                
+              ],
             ),
-             SizedBox(height: size.height * 0.1),
-          ],
+            Container(
+              height: 270,
+              width: 270,
+              margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+              child: const Image(image: AssetImage('assets/images/vector.png')),
+            ),
+
+            
+          ]
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class SlideLeft extends PageRouteBuilder {
   final Page;
   SlideLeft({this.Page})
@@ -10,15 +11,14 @@ class SlideLeft extends PageRouteBuilder {
               var begin = Offset(0.1, 0.0);
               var end = Offset(0.0, 0.0);
               var tween = Tween(begin: begin, end: end);
-              var curvesanimation = CurvedAnimation(
-                  parent: animation, curve: Curves.slowMiddle);
+              var curvesanimation =
+                  CurvedAnimation(parent: animation, curve: Curves.slowMiddle);
               return SlideTransition(
                 position: tween.animate(curvesanimation),
                 child: child,
               );
             });
 }
-
 
 class SlideRight extends PageRouteBuilder {
   final Page;
@@ -30,14 +30,17 @@ class SlideRight extends PageRouteBuilder {
               var begin = Offset(0.1, 0.0);
               var end = Offset(0.0, 0.0);
               var tween = Tween(begin: begin, end: end);
-              var curvesanimation = CurvedAnimation(
-                  parent: animation, curve: Curves.slowMiddle);
+              var curvesanimation =
+                  CurvedAnimation(parent: animation, curve: Curves.slowMiddle);
               return SlideTransition(
                 position: tween.animate(curvesanimation),
                 child: child,
               );
             });
 }
+
+ 
+
 // class SlideRight extends PageRouteBuilder {
 //   final Page;
 //   SlideRight({this.Page})
