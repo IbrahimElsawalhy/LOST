@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_ui/Screens/animation/animation.dart';
 import 'package:login_ui/Screens/homee/home.dart';
+import 'package:login_ui/Screens/animation/animation.dart';
 import 'package:login_ui/Screens/login/reset_pass.dart';
 import 'package:login_ui/Screens/register/register.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreenUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -35,7 +35,7 @@ class LoginScreen extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).push(SlideLeft(Page: HomePage()));
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_outlined,
               color: Color.fromRGBO(255, 255, 255, 1),
             )),
@@ -65,7 +65,7 @@ class LoginScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.fromLTRB(30.0, 20.0, 0.0, 10.0),
               child: Text(
-                "Please sign in to continue as a store owner",
+                "Please sign in to continue .. ",
                 style: GoogleFonts.nunitoSans(
                     height: 0,
                     color: Color.fromRGBO(100, 100, 100, 1),
@@ -88,9 +88,9 @@ class LoginScreen extends StatelessWidget {
                       labelStyle: TextStyle(
                         color: Colors.grey[700],
                       ),
-                      labelText: "Email",
+                      labelText: "Phone Number or Email",
                       prefixIcon:
-                          Icon(Icons.email, size: 25, color: Colors.grey[700]),
+                          Icon(Icons.people, size: 25, color: Colors.grey[700]),
                       enabledBorder:
                           OutlineInputBorder(borderSide: BorderSide.none),
                       focusedBorder: OutlineInputBorder(
@@ -111,6 +111,7 @@ class LoginScreen extends StatelessWidget {
                   controller: password,
                   decoration: InputDecoration(
                       fillColor: Colors.white,
+                      hoverColor: Colors.white,
                       filled: true,
                       labelStyle: TextStyle(
                         color: Colors.grey[700],
@@ -140,7 +141,7 @@ class LoginScreen extends StatelessWidget {
                     color: Color.fromRGBO(100, 100, 100, 1)),
               ),
             ),),
-             SizedBox(height: size.height * 0.04),
+            SizedBox(height: size.height * 0.04),
             Row(
               children: [
                 Container(
@@ -155,14 +156,13 @@ class LoginScreen extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.center,
                       height: 50.0,
-                      width: size.width * 0.50,
+                      width: size.width * 0.55,
                       decoration: new BoxDecoration(
                           borderRadius: BorderRadius.circular(20.0),
                           gradient: new LinearGradient(colors: [
                             Color.fromRGBO(146, 39, 142, 1),
                             Color.fromRGBO(158, 31, 100, 1)
                           ])),
-                      padding: const EdgeInsets.all(0),
                       child: Text(
                         "LOGIN",
                         textAlign: TextAlign.center,
@@ -172,25 +172,11 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  child: Icon(
-                    Icons.facebook_rounded,
-                    color: Colors.blue,
-                    size: 50,
-                  ),
-                ),
-                Container(
-                  child: Image(
-                    image: AssetImage('assets/images/icons8-google-100.png'),
-                    width: 65,
-                    height: 65,
-                  ),
-                ),
               ],
             ),
             Container(
               alignment: Alignment.centerLeft,
-              margin: EdgeInsets.symmetric(horizontal: 32, vertical: 0),
+              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 0),
               child: GestureDetector(
                 onTap: () =>
                     {Navigator.of(context).push(SlideLeft(Page: MyHomePage()))},

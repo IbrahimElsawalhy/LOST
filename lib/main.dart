@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'Screens/homee/home.dart';
 import 'Screens/homee/loading_page.dart';
 
 void main() {

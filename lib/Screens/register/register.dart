@@ -11,130 +11,99 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _activeCurrentStep = 0;
+  int _activeStepIndex = 0;
 
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController pass = TextEditingController();
   TextEditingController address = TextEditingController();
-  TextEditingController storename = TextEditingController();
+  TextEditingController pincode = TextEditingController();
 
   List<Step> stepList() => [
         Step(
-          state:
-              _activeCurrentStep <= 0 ? StepState.indexed : StepState.complete,
-          isActive: _activeCurrentStep >= 0,
-          
+          state: _activeStepIndex <= 0 ? StepState.indexed : StepState.complete,
+          isActive: _activeStepIndex >= 0,
           title: const Text('Account'),
           content: Container(
             child: Column(
-              children: [ 
-                
-               TextField(
+              children: [
+                TextField(
                   controller: name,
-                  decoration: InputDecoration(
-                    fillColor: Colors.grey[350], filled: true,
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                    ),
-                    labelText: "Full Name",
-                    border: myinputborder(),
-                    enabledBorder: myinputborder(),
-                    focusedBorder: myfocusborder(),
-                  )),
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Full Name',
+                  ),
+                ),
                 const SizedBox(
-                  height: 10,
+                  height: 8,
                 ),
                 TextField(
                   controller: email,
-                  decoration: InputDecoration(
-                    fillColor: Colors.grey[350], filled: true,
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                    ),
-                    labelText: "Email",
-                    border: myinputborder(),
-                    enabledBorder: myinputborder(),
-                    focusedBorder: myfocusborder(),
-                  )),
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Email',
+                  ),
+                ),
                 const SizedBox(
-                  height: 10,
+                  height: 8,
                 ),
                 TextField(
-                  obscureText: true,
                   controller: pass,
-                  decoration: InputDecoration(
-                    fillColor: Colors.grey[350], filled: true,
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                    ),
-                    labelText: "Password",
-                    border: myinputborder(),
-                    enabledBorder: myinputborder(),
-                    focusedBorder: myfocusborder(),
-                  )),
-                    const SizedBox(
-                  height: 10,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Password',
+                  ),
                 ),
               ],
             ),
           ),
         ),
         Step(
-            state: _activeCurrentStep <= 1
-                ? StepState.indexed
-                : StepState.complete,
-            isActive: _activeCurrentStep >= 1,
+            state:
+                _activeStepIndex <= 1 ? StepState.indexed : StepState.complete,
+            isActive: _activeStepIndex >= 1,
             title: const Text('Address'),
             content: Container(
               child: Column(
                 children: [
-                   TextField(
-                  controller: storename,
-                  decoration: InputDecoration(
-                    fillColor: Colors.grey[350], filled: true,
-                    labelStyle: TextStyle(
-                      color: Colors.black,
-                    ),
-                    labelText: "Store Name",
-                    border: myinputborder(),
-                    enabledBorder: myinputborder(),
-                    focusedBorder: myfocusborder(),
-                  )),   const SizedBox(
-                    height: 10,
+                  const SizedBox(
+                    height: 8,
                   ),
-                   TextField(
-                  controller: address,
-                  decoration: InputDecoration(
-                    fillColor: Colors.grey[350], filled: true,
-                    labelStyle: TextStyle(
-                      color: Colors.black,
+                  TextField(
+                    controller: address,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Full House Address',
                     ),
-                    labelText: "Full Store Address",
-                    border: myinputborder(),
-                    enabledBorder: myinputborder(),
-                    focusedBorder: myfocusborder(),
-                  )),
-                   const SizedBox(
-                    height: 10,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  TextField(
+                    controller: pincode,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Pin Code',
+                    ),
                   ),
                 ],
               ),
             )),
         Step(
             state: StepState.complete,
-            isActive: _activeCurrentStep >= 2,
+            isActive: _activeStepIndex >= 2,
             title: const Text('Confirm'),
             content: Container(
                 child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text('Name: ${name.text}'),
                 Text('Email: ${email.text}'),
-                Text('Password: ${pass.text}'),
+                const Text('Password: *****'),
                 Text('Address : ${address.text}'),
-                Text('PinCode : ${storename.text}'),
+                Text('PinCode : ${pincode.text}'),
               ],
             )))
       ];
@@ -142,84 +111,89 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      
-      body:  SingleChildScrollView(
-        child: Column(
-          children: <Widget> [ 
-               Container(
-                alignment: Alignment.center,
-              padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 20.0),
-              child: 
-            Image.asset(
-              'assets/images/logo.jpg',
-              width: 220.0,
-              ),
-              ),
-              Container(
-            
-              alignment: Alignment.center,
-              padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 10.0),
-              child: Text(
-          
-                "Create new account",
-          
-                style: GoogleFonts.nunitoSans(
-                    height:0 ,
-                    color: Color.fromRGBO(100, 100, 100, 1),
-                    fontSize: 25),
-              ),
-            ),
-            Stepper(
-              
-        //type: StepperType.horizontal,
-        currentStep: _activeCurrentStep,
+     appBar: AppBar(
+        centerTitle: true,
+        title: Image(
+          image: AssetImage('assets/images/logo_nav.png'),
+          width: 100,
+          height: 100,
+        ),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40),
+                  bottomRight: Radius.circular(40)),
+              gradient: LinearGradient(colors: [
+                Color.fromRGBO(146, 39, 142, 1),
+                Color.fromRGBO(158, 31, 100, 1)
+              ])),
+        ),
+       backgroundColor: Colors.transparent,
+        elevation: 0, 
+      ),
+      body: Theme(data: Theme.of(context).copyWith(
+        colorScheme: ColorScheme.light(primary: Color.fromRGBO(146, 39, 142, 1) ),),
+      child:Stepper(
+        type: StepperType.horizontal,
+        
+        currentStep: _activeStepIndex,
         steps: stepList(),
         onStepContinue: () {
-          if (_activeCurrentStep < (stepList().length - 1)) {
+          if (_activeStepIndex < (stepList().length - 1)) {
             setState(() {
-              _activeCurrentStep += 1;
+              _activeStepIndex += 1;
             });
+          } else {
+            print('Submited');
           }
         },
         onStepCancel: () {
-          if (_activeCurrentStep == 0) {
+          if (_activeStepIndex == 0) {
             return;
           }
 
           setState(() {
-            _activeCurrentStep -= 1;
+            _activeStepIndex -= 1;
           });
         },
         onStepTapped: (int index) {
           setState(() {
-            _activeCurrentStep = index;
+            _activeStepIndex = index;
           });
         },
+        controlsBuilder: (context, {onStepContinue, onStepCancel}) {
+          final isLastStep = _activeStepIndex == stepList().length - 1;
+          return Container(
+            child: Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                     style: ButtonStyle(shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
+                     borderRadius: BorderRadius.circular(50.0),
+                     side: BorderSide(color: Colors.red)
+     ))),
+                    onPressed: onStepContinue,
+                    child: (isLastStep)
+                        ? const Text('Submit')
+                        : const Text('Next'),
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                if (_activeStepIndex > 0)
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: onStepCancel,
+                      child: const Text('Back'),
+                    ),
+                  )
+              ],
             ),
-          ],
-        ),
-      ),
+          );
+        },
+      
+      ),),
     );
   }
-}
-
-OutlineInputBorder myinputborder() {
-  //return type is OutlineInputBorder
-  return OutlineInputBorder(
-      //Outline border type for TextFeild
-      borderRadius: BorderRadius.all(Radius.circular(80)),
-      borderSide: BorderSide(
-        color: Colors.grey,
-        width: 2,
-      ));
-}
-
-OutlineInputBorder myfocusborder() {
-  return OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(80)),
-      borderSide: BorderSide(
-        color: Colors.grey,
-        width: 2,
-      ));
 }

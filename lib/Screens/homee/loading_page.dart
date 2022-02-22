@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
 import 'package:login_ui/Screens/animation/animation.dart';
-import 'package:login_ui/Screens/register/register.dart';
-
 import 'home.dart';
 
 class Splash extends StatefulWidget {
@@ -25,7 +22,7 @@ class _SplashState extends State<Splash> {
   // ignore: unused_element
   _navigatetohome() async {
     await Future.delayed(Duration(milliseconds: 5000), () {});
-    Navigator.of(context).push(SlideLeft(Page: home_page()));
+    Navigator.of(context).push(SlideLeft(Page: HomePage()));
   }
 
   @override
@@ -52,7 +49,8 @@ class _SplashState extends State<Splash> {
                   final color = colors[index % colors.length];
 
                   return DecoratedBox(
-                    decoration: BoxDecoration(color: color , shape: BoxShape.circle),
+                    decoration:
+                        BoxDecoration(color: color, shape: BoxShape.circle),
                   );
                 },
               ),
