@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:login_ui/Screens/animation/animation.dart';
+// import 'package:Lost/Screens/animation/animation.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_ui/Screens/login/pin_code.dart';
 
 class ResetPass extends StatelessWidget {
   TextEditingController username = TextEditingController();
@@ -34,16 +33,17 @@ class ResetPass extends StatelessWidget {
           child: Column(
         children: <Widget>[
           Container(
-              alignment: Alignment.centerLeft,
-              padding: EdgeInsets.fromLTRB(30.0, 40.0, 0.0, 20.0),
-              child: Text(
-                "Please Enter your email .. ",
-                style: GoogleFonts.nunitoSans(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,),
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.fromLTRB(30.0, 40.0, 0.0, 20.0),
+            child: Text(
+              "Please Enter your email .. ",
+              style: GoogleFonts.nunitoSans(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
             ),
+          ),
           Container(
             alignment: Alignment.center,
             margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
@@ -68,37 +68,77 @@ class ResetPass extends StatelessWidget {
                         borderSide: BorderSide(color: Colors.grey, width: 1))),
               ),
             ),
-          ),               
+          ),
            Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                  child: RaisedButton(
-                    onPressed: () => {
+              alignment: Alignment.center,
+                    margin: EdgeInsets.symmetric(horizontal: 40, vertical: 0),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.fromLTRB(0.0, 20.0, 10.0, 20.0),
+                        child: RaisedButton(
+                          onPressed: () => {
                             Navigator.of(context)
-                                .push(SlideLeft(Page: PinCode()))
+                                .pushReplacementNamed("pincode")
                           },
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0)),
-                    textColor: Colors.white,
-                    padding: const EdgeInsets.all(0),
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 50.0,
-                      width: size.width * 0.55,
-                      decoration: new BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.0),
-                          gradient: new LinearGradient(colors: [
-                            Color.fromRGBO(146, 39, 142, 1),
-                            Color.fromRGBO(158, 31, 100, 1)
-                          ])),
-                      padding: const EdgeInsets.all(0),
-                      child: Text(
-                        "Confirm",
-                        textAlign: TextAlign.center,
-                        style:
-                            GoogleFonts.nunitoSans(fontWeight: FontWeight.bold),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          textColor: Colors.white,
+                          padding: const EdgeInsets.all(0),
+                          child: Container(
+                            alignment: Alignment.center,
+                            height: 50.0,
+                            width: size.width * 0.35,
+                            decoration: new BoxDecoration(
+                                borderRadius: BorderRadius.circular(20.0),
+                                gradient: new LinearGradient(colors: [
+                                  Color.fromRGBO(146, 39, 142, 1),
+                                  Color.fromRGBO(158, 31, 100, 1)
+                                ])),
+                            padding: const EdgeInsets.all(0),
+                            child: Text(
+                              "Confirm",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.nunitoSans(
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      Container(
+                        alignment: Alignment.center,
+            margin: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 20.0),
+                        child: RaisedButton(
+                          onPressed: () => {
+                            Navigator.of(context)
+                                .pushReplacementNamed("loginscreen")
+                          },
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          textColor: Colors.white,
+                          padding: const EdgeInsets.all(0),
+                          child: Container(
+                            alignment: Alignment.center,
+                            height: 50.0,
+                            width: size.width * 0.35,
+                            decoration: new BoxDecoration(
+                                borderRadius: BorderRadius.circular(20.0),
+                                gradient: new LinearGradient(colors: [
+                                  Color.fromRGBO(146, 39, 142, 1),
+                                  Color.fromRGBO(158, 31, 100, 1)
+                                ])),
+                            padding: const EdgeInsets.all(0),
+                            child: Text(
+                              "Cancel",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.nunitoSans(
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
           Container(

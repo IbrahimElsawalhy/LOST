@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:login_ui/Screens/animation/animation.dart';
-import 'package:login_ui/Screens/login/login.dart';
+import 'package:Lost/Screens/animation/animation.dart';
+import 'package:Lost/Screens/login/login.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_ui/Screens/login/login_user.dart';
+import 'package:Lost/Screens/login/login_user.dart';
 
 class HomePage extends StatelessWidget {
   var text;
@@ -32,18 +32,19 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Center(
+      body: SingleChildScrollView(
         // ignore: avoid_unnecessary_containers
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Row(
+            
             children: [
               Column(children: <Widget>[
                 Container(
-                  padding: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 5.0),
+                  padding: EdgeInsets.fromLTRB(30.0, 50.0, 0.0, 5.0),
                   child: GestureDetector(
                       onTap: () => {
-                            Navigator.of(context)
-                                .push(SlideLeft(Page: LoginScreenUser()))
+                            Navigator.of(context).pushReplacementNamed("loginscreenuser")
+
                           },
                       child: Image(
                         image: AssetImage(
@@ -53,11 +54,10 @@ class HomePage extends StatelessWidget {
                       )),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
+                  padding: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 10.0),
                   child: GestureDetector(
                     onTap: () => {
-                      Navigator.of(context)
-                          .push(SlideLeft(Page: LoginScreenUser()))
+                      Navigator.of(context).pushReplacementNamed("loginscreenuser")
                     },
                     child: Text(
                       'Make report',
@@ -73,11 +73,10 @@ class HomePage extends StatelessWidget {
               ]),
               Column(children: <Widget>[
                 Container(
-                  padding: EdgeInsets.fromLTRB(70.0, 0.0, 0.0, 5.0),
+                  padding: EdgeInsets.fromLTRB(70.0, 50.0, 0.0, 5.0),
                   child: GestureDetector(
                       onTap: () => {
-                            Navigator.of(context)
-                                .push(SlideLeft(Page: LoginScreen()))
+                            Navigator.of(context).pushReplacementNamed("loginscreen")
                           },
                       child: Image(
                         image: AssetImage(
@@ -87,10 +86,10 @@ class HomePage extends StatelessWidget {
                       )),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(70.0, 0.0, 0.0, 0.0),
+                  padding: EdgeInsets.fromLTRB(70.0, 0.0, 0.0, 10.0),
                   child: GestureDetector(
                     onTap: () => {
-                      Navigator.of(context).push(SlideLeft(Page: LoginScreen()))
+                            Navigator.of(context).pushReplacementNamed("loginscreen")
                     },
                     child: Text(
                       'Store owner',

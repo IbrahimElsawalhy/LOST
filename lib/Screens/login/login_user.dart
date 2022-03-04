@@ -1,19 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_ui/Screens/homee/home.dart';
-import 'package:login_ui/Screens/animation/animation.dart';
-import 'package:login_ui/Screens/login/reset_pass.dart';
-import 'package:login_ui/Screens/register/register.dart';
+import 'package:wc_form_validators/wc_form_validators.dart';
 
 class LoginScreenUser extends StatelessWidget {
+    TextEditingController email = TextEditingController();
+    TextEditingController password = TextEditingController();
+    final formKey = GlobalKey<FormState>();
+    final scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    TextEditingController username = TextEditingController();
-    TextEditingController password = TextEditingController();
+  
 
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         centerTitle: true,
         title: Image(
@@ -33,23 +33,24 @@ class LoginScreenUser extends StatelessWidget {
         ),
         leading: IconButton(
             onPressed: () {
-              Navigator.of(context).push(SlideLeft(Page: HomePage()));
+              Navigator.of(context).pushReplacementNamed("homepage");
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_outlined,
               color: Color.fromRGBO(255, 255, 255, 1),
             )),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: SingleChildScrollView(
-        child: Column(
+      body: Form(
+        key: formKey,
+        child: ListView(
           // mainAxisAlignment: MainAxisAlignment.end,
 
           children: <Widget>[
             Container(
               alignment: Alignment.centerLeft,
-              margin: EdgeInsets.fromLTRB(30.0, 70.0, 0.0, 0.0),
+              margin: EdgeInsets.fromLTRB(30.0, 50.0, 0.0, 0.0),
               child: Text(
                 "Login",
                 textAlign: TextAlign.left,
@@ -63,9 +64,9 @@ class LoginScreenUser extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.fromLTRB(30.0, 20.0, 0.0, 10.0),
+              padding: EdgeInsets.fromLTRB(29.0, 20.0, 26.0, 0.0),
               child: Text(
-                "Please sign in to continue .. ",
+                "Please sign in to continue as a store owner",
                 style: GoogleFonts.nunitoSans(
                     height: 0,
                     color: Color.fromRGBO(100, 100, 100, 1),
@@ -74,53 +75,61 @@ class LoginScreenUser extends StatelessWidget {
             ),
             SizedBox(height: size.height * 0.07),
             Container(
-              alignment: Alignment.center,
-              margin: EdgeInsets.symmetric(horizontal: 30),
+              margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 5.0),
               child: Material(
-                elevation: 2,
-                shadowColor: Color.fromRGBO(210, 49, 153, 1),
-                child: TextField(
-                  controller: username,
+                elevation: 4,
+                shadowColor: Color.fromRGBO(158, 31, 100, 1),
+                child: TextFormField(
+                  keyboardType: TextInputType.text,
+                  validator: Validators.compose([
+                    Validators.required('email is required'),
+                    Validators.email('invalid email address')
+                  ]),
+                  controller: email,
                   decoration: InputDecoration(
                       fillColor: Colors.white,
-                      hoverColor: Colors.white,
                       filled: true,
                       labelStyle: TextStyle(
                         color: Colors.grey[700],
                       ),
-                      labelText: "Phone Number or Email",
+                      labelText: "Email",
+                      hintText: "example@gmail.com",
                       prefixIcon:
-                          Icon(Icons.people, size: 25, color: Colors.grey[700]),
-                      enabledBorder:
-                          OutlineInputBorder(borderSide: BorderSide.none),
+                          Icon(Icons.email, size: 25, color: Colors.grey[700]),
                       focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: Colors.grey, width: 1))),
                 ),
               ),
             ),
-            SizedBox(height: size.height * 0.02),
+            SizedBox(height: size.height * 0.01),
             Container(
-              alignment: Alignment.center,
-              margin: EdgeInsets.symmetric(horizontal: 30),
+              margin: EdgeInsets.fromLTRB(30.0, 5.0, 30.0, 0.0),
               child: Material(
-                elevation: 2,
-                shadowColor: Color.fromRGBO(210, 49, 153, 1),
-                child: TextField(
+                elevation: 4,
+                shadowColor: Color.fromRGBO(158, 31, 100, 1),
+                child: TextFormField(
+                  keyboardType: TextInputType.text,
+                  validator: Validators.compose([
+                    Validators.required('password is required'),
+                    Validators.minLength(6, "please enter at least 8 chars")
+                  ]),
                   obscureText: true,
                   controller: password,
                   decoration: InputDecoration(
                       fillColor: Colors.white,
-                      hoverColor: Colors.white,
                       filled: true,
+                      errorStyle: TextStyle(
+                        color: Colors.red,
+                        backgroundColor: Colors.white,
+                      ),
                       labelStyle: TextStyle(
                         color: Colors.grey[700],
                       ),
                       labelText: "Password",
+                      hintText: "[a-z]+[0-9]+{@#%^&*}",
                       prefixIcon:
                           Icon(Icons.lock, size: 25, color: Colors.grey[700]),
-                      enabledBorder:
-                          OutlineInputBorder(borderSide: BorderSide.none),
                       focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: Colors.grey, width: 1))),
@@ -132,15 +141,16 @@ class LoginScreenUser extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               child: GestureDetector(
                 onTap: () =>
-                    {Navigator.of(context).push(SlideLeft(Page: ResetPass()))},
-                    child: Text(
-                "Forgot your password?",
-                style: GoogleFonts.ubuntu(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(100, 100, 100, 1)),
+                    {Navigator.of(context).pushReplacementNamed("resetpass")},
+                child: Text(
+                  "Forgot your password?",
+                  style: GoogleFonts.ubuntu(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(100, 100, 100, 1)),
+                ),
               ),
-            ),),
+            ),
             SizedBox(height: size.height * 0.04),
             Row(
               children: [
@@ -148,7 +158,17 @@ class LoginScreenUser extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        print(email.text);
+                        print(password.text);
+                        print('success');
+                        Navigator.of(context).pushReplacementNamed("homepage");
+                      } 
+                      else {
+                        return null;
+                      }
+                    },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0)),
                     textColor: Colors.white,
@@ -156,13 +176,14 @@ class LoginScreenUser extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.center,
                       height: 50.0,
-                      width: size.width * 0.55,
+                      width: size.width * 0.50,
                       decoration: new BoxDecoration(
                           borderRadius: BorderRadius.circular(20.0),
                           gradient: new LinearGradient(colors: [
                             Color.fromRGBO(146, 39, 142, 1),
                             Color.fromRGBO(158, 31, 100, 1)
                           ])),
+                      padding: const EdgeInsets.all(0),
                       child: Text(
                         "LOGIN",
                         textAlign: TextAlign.center,
@@ -176,10 +197,11 @@ class LoginScreenUser extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.centerLeft,
-              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 0),
+              margin: EdgeInsets.symmetric(horizontal: 32, vertical: 0),
               child: GestureDetector(
-                onTap: () =>
-                    {Navigator.of(context).push(SlideLeft(Page: MyHomePage()))},
+                onTap: () => {
+                  Navigator.of(context).pushReplacementNamed("registerpage")
+                },
                 child: Text(
                   "Don't Have an Account? Sign up",
                   style: GoogleFonts.ubuntu(

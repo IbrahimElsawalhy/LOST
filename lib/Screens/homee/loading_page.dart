@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:login_ui/Screens/animation/animation.dart';
+import 'package:Lost/Screens/animation/animation.dart';
 import 'home.dart';
 
 class Splash extends StatefulWidget {
@@ -22,7 +22,7 @@ class _SplashState extends State<Splash> {
   // ignore: unused_element
   _navigatetohome() async {
     await Future.delayed(Duration(milliseconds: 5000), () {});
-    Navigator.of(context).push(SlideLeft(Page: HomePage()));
+    Navigator.of(context).pushReplacementNamed("homepage");
   }
 
   @override
